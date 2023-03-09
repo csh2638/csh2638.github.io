@@ -125,6 +125,10 @@ You can enable MathJax on each post or page, just set `math: true` on that page.
 
 If you want to show the Table of Contents of a post or page on the left sidebar, just set `toc: true` on that page.
 
+```yml
+toc: true
+```
+
 ## Customization
 
 ### Metadata
@@ -165,14 +169,7 @@ The navigation bar also supports dropdown submenus:
 
 You can create a file `_data/social.yml` to configure links to your social media. For example,
 
-```yml
-- title: Twitter
-  url: https://twitter.com/ngzhio
-  icon: fab fa-twitter
-- title: GitHub
-  url: https://github.com/ngzhio/jekyll-theme-hamilton
-  icon: fab fa-github
-```
+
 
 ### Skins
 
