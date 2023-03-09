@@ -25,8 +25,9 @@
   <script>
     const hour = (new Date()).getHours();
     let filename = "";
-    if (hour >= 5 && hour < 7) {
-      filename = "{{ '/assets/css/skin-sunrise.css' | relative_url }}";
+    filename = "{{ '/assets/css/skin-sunrise.css' | relative_url }}";
+    // if (hour >= 5 && hour < 7) {
+      
     //   filename = "{{ '/assets/css/skin-sunrise.css' | relative_url }}";
     // } else if (hour >= 7 && hour < 17) {
     //   filename = "{{ '/assets/css/skin-daylight.css' | relative_url }}";
@@ -34,7 +35,7 @@
     //   filename = "{{ '/assets/css/skin-sunset.css' | relative_url }}";
     // } else {
     //   filename = "{{ '/assets/css/skin-midnight.css' | relative_url }}";
-    }
+    // }
     const elem = document.createElement("link");
     elem.setAttribute("rel", "stylesheet");
     elem.setAttribute("type", "text/css");
