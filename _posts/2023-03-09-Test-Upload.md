@@ -2,7 +2,7 @@
 layout: post
 title: Test Upload
 subtitle: Test subtitle
-categories: markdown
+categories: TEST
 tags: [TEST]
 ---
 
