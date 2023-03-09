@@ -1,186 +1,110 @@
-# Hamilton <!-- omit in toc -->
+<p align="right">
+    <a href="https://badge.fury.io/rb/just-the-docs"><img src="https://badge.fury.io/rb/just-the-docs.svg" alt="Gem version"></a> <a href="https://github.com/just-the-docs/just-the-docs/actions/workflows/ci.yml"><img src="https://github.com/just-the-docs/just-the-docs/actions/workflows/ci.yml/badge.svg" alt="CI Build status"></a> <a href="https://app.netlify.com/sites/just-the-docs/deploys"><img src="https://api.netlify.com/api/v1/badges/9dc0386d-c2a4-4077-ad83-f02c33a6c0ca/deploy-status" alt="Netlify Status"></a>
+</p>
+<br><br>
+<p align="center">
+    <h1 align="center">Just the Docs</h1>
+    <p align="center">A modern, highly customizable, and responsive Jekyll theme for documentation with built-in search.<br>Easily hosted on GitHub Pages with few dependencies.</p>
+    <p align="center"><strong><a href="https://just-the-docs.github.io/just-the-docs/">See it in action!</a></strong></p>
+    <br><br><br>
+</p>
 
-A minimal and beautiful Jekyll theme best for writing and note-taking.
+<p align="center">A video walkthrough of various Just the Docs features</p>
 
-The original purpose of this theme is to be a replacement of the default Jekyll theme -- [Minima](https://github.com/jekyll/minima). Hamilton is an enhancement of Minima but still, keep in minimal.
-
-Please check out the [demo](https://ngzhio.github.io/jekyll-theme-hamilton/).
-
-| Skins | Displays |
-| ----- | -------- |
-| Daylight | ![screenshot](screenshot.png) |
-| Sunrise/Sunset | ![screenshot](screenshot-sunrise.png) |
-| Midnight | ![screenshot](screenshot-midnight.png) |
-
-## Features <!-- omit in toc -->
-
-- [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag)
-- [Jekyll Feed](https://github.com/jekyll/jekyll-feed)
-- [Jekyll Sitemap](https://github.com/jekyll/jekyll-sitemap)
-- [Google Analytics](https://analytics.google.com/)
-- [MathJax](https://www.mathjax.org/)
-- [Disqus](https://disqus.com/)
-- [Font Awesome](https://fontawesome.com/)
-- TOC
-- Customizable head
-- Configurable page navigation
-- Customizable styles and skins
-- Archive pages implemented in pure Liquid
-
-## Table of Contents <!-- omit in toc -->
-
-- [Installation](#installation)
-- [Configuration](#configuration)
-  - [Optional Parameters](#optional-parameters)
-- [Archive Pages](#archive-pages)
-- [MathJax](#mathjax)
-- [TOC](#toc)
-- [Customization](#customization)
-  - [Metadata](#metadata)
-  - [Navigation](#navigation)
-  - [Social Media](#social-media)
-  - [Skins](#skins)
-  - [More Customized Styles](#more-customized-styles)
-- [License](#license)
+https://user-images.githubusercontent.com/85418632/211225192-7e5d1116-2f4f-4305-bb9b-437fe47df071.mp4
 
 ## Installation
 
-You can choose one of the following methods to install Hamilton:
+### Use the template
 
-- Directly specify the `jekyll-theme-hamilton` gem.
+The [Just the Docs Template] provides the simplest, quickest, and easiest way to create a new website that uses the Just the Docs theme. To get started with creating a site, just click "[use the template]"!
 
-    1. Add `gem 'jekyll-theme-hamilton'` into your `Gemfile`.
-    2. Add the below lines into your `_config.yml`.
+Note: To use the theme, you do ***not*** need to clone or fork the [Just the Docs repo]! You should do that only if you intend to browse the theme docs locally, contribute to the development of the theme, or develop a new theme based on Just the Docs.
 
-        ```yml
-        plugins:
-          - jekyll-theme-hamilton
-        ```
+You can easily set the site created by the template to be published on [GitHub Pages] – the [template README] file explains how to do that, along with other details.
 
-- If your site is hosted on GitHub Pages, you can use [`jekyll-remote-theme`](https://github.com/benbalter/jekyll-remote-theme) to import the master branch of Hamilton.
+If [Jekyll] is installed on your computer, you can also build and preview the created site *locally*. This lets you test changes before committing them, and avoids waiting for GitHub Pages.[^2] And you will be able to deploy your local build to a different platform than GitHub Pages.
 
-    1. Add `gem 'jekyll-remote-theme'` into your `Gemfile`.
-    2. Add the below lines into your `_config.yml`.
+More specifically, the created site:
 
-        ```yml
-        plugins:
-          - jekyll-remote-theme
+- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem
+- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages
 
-        remote_theme: ngzhio/jekyll-theme-hamilton
-        ```
+Other than that, you're free to customize sites that you create with the template, however you like. You can easily change the versions of `just-the-docs` and Jekyll it uses, as well as adding further plugins.
 
-## Configuration
+### Use RubyGems
 
-After installation, you can run `jekyll serve` to check out your site, but before that, *make sure* the below **required parameters** are configured in your `_config.yml`.
+Alternatively, you can install the theme as a Ruby Gem, without creating a new site.
 
-| Parameters | Types | Specifications |
-|:---------- |:----- |:-------------- |
-| `title`    | string | The site title |
-| `disqus`   | string | The Disqus shortname; Unless you don't want to enable the comments system, you must specify this parameter. It is used in the production environment. |
-| `google_analytics` | string | The Google Analytics tracking ID; It is used in the production environment. |
+Add this line to your Jekyll site's `Gemfile`:
 
-### Optional Parameters
-
-| Parameters | Types | Specifications |
-|:---------- |:----- |:-------------- |
-| `author`   | string | The name of the author of the site; It would be showed in the copyright statement. |
-| `avatar`   | string | The avatar of the author of the site. |
-| `email`    | string | The email of the author of the site. |
-| `location` | string | The current living location of the author of the site. |
-| `skin`     | string | The skin name. See more information on the [Customization](#customization) section. |
-| `lang`     | string | The language of the site; The default value is `en`. |
-| `paginate` | int    | The number of posts on each page. |
-| `date_format` | string | The date format; The default value is `%b %-d, %Y`. |
-| `subscribe` | boolean | Show the subsribe feed button. |
-
-## Archive Pages
-
-Hamilton implements some archive templates in pure Liquid. For example, if you want to create a category archive page, set the below parameters on that page:
-
-```yml
----
-layout: archive-taxonomies
-type: categories
----
+```ruby
+gem "just-the-docs"
 ```
 
-Or a tag archive page:
+And add this line to your Jekyll site's `_config.yml`:
 
-```yml
-layout: archive-taxonomies
-type: tags
+```yaml
+theme: just-the-docs
 ```
 
-Or archive by years:
+And then execute:
 
-```yml
-layout: archive-years
-```
+    $ bundle
 
-## MathJax
+Or install it yourself as:
 
-You can enable MathJax on each post or page, just set `math: true` on that page.
+    $ gem install just-the-docs
 
-## TOC
+Alternatively, you can run it inside Docker while developing your site
 
-If you want to show the Table of Contents of a post or page on the left sidebar, just set `toc: true` on that page.
+    $ docker-compose up
 
-```yml
-toc: true
-```
+## Usage
 
-## Customization
+[View the documentation][Just the Docs] for usage information.
 
-### Metadata
+## Contributing
 
-You can create a file `_includes/custom-head.html` in your repository, and add any metadata into that page, e.g. favicons.
+Bug reports, proposals of new features, and pull requests are welcome on GitHub at https://github.com/just-the-docs/just-the-docs. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-### Navigation
+### Submitting code changes:
 
-You can create a file `_data/navigation.yml` to configure links to some pages. For example,
+- Submit an [Issue](https://github.com/just-the-docs/just-the-docs/issues) that motivates the changes, using the appropriate template
+- Discuss the proposed changes with other users and the maintainers
+- Open a [Pull Request](https://github.com/just-the-docs/just-the-docs/pulls)
+- Ensure all CI tests pass
+- Provide instructions to check the effect of the changes
+- Await code review
 
-```yml
-- title: About
-  url: /about/
-- title: Categories
-  url: /categories/
-- title: Tags
-  url: /tags/
-```
+### Design and development principles of this theme:
 
-The navigation bar also supports dropdown submenus:
+1. As few dependencies as possible
+2. No build script needed
+3. First class mobile experience
+4. Make the content shine
 
-```yml
-- title: About
-  url: /about/
-- title: Categories
-  url: /categories/
-- title: Tags
-  url: /tags/
-- title: More
-  sublinks:
-    - title: FAQ
-      url: /faq/
-    - title: Docs
-      url: /docs/
-```
+## Development
 
-### Social Media
+To set up your environment to develop this theme: fork this repo, the run `bundle install` from the root directory.
 
-You can create a file `_data/social.yml` to configure links to your social media. For example,
+A modern [devcontainer configuration](https://code.visualstudio.com/docs/remote/containers) for VSCode is included.
 
+Your theme is set up just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
-
-### Skins
-
-You can select a skin by setting `skin` in `_config.yml`. The built-in skins include `daylight`, `midnight`, `sunrise`, and `sunset`. If you don't specify any skin, Hamilton would dynamically select one in these built-in skins according to different hours in a day.
-
-You can also customize a new skin, for example, a skin called `solarized`. You need to copy [`_sass/hamilton/skins/daylight.scss`](_sass/hamilton/skins/daylight.scss) into your repository and then rename it to `solarized.scss`, and adjust some colors in that file. Finally, specify `skin: solarized` in `_config.yml`.
-
-### More Customized Styles
-
-If you want to create more CSS styles in your site, creating a file `_sass/hamilton/custom-styles.scss`, and putting your code in there, Hamilton would automatically refer to them.
+When this theme is released, only the files in `_layouts`, `_includes`, and `_sass` tracked with Git will be included in the gem.
 
 ## License
 
-The theme is available as open source under the terms of the [MIT License](LICENSE.txt).
+The theme is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+[^2]: [It can take up to 10 minutes for changes to your site to publish after you push the changes to GitHub](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/creating-a-github-pages-site-with-jekyll#creating-your-site).
+
+[Jekyll]: https://jekyllrb.com
+[Just the Docs Template]: https://just-the-docs.github.io/just-the-docs-template/
+[Just the Docs]: https://just-the-docs.github.io/just-the-docs/
+[Just the Docs repo]: https://github.com/just-the-docs/just-the-docs
+[GitHub Pages]: https://pages.github.com/
+[Template README]: https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md
+[GitHub Pages / Actions workflow]: https://github.blog/changelog/2022-07-27-github-pages-custom-github-actions-workflows-beta/
+[use the template]: https://github.com/just-the-docs/just-the-docs-template/generate

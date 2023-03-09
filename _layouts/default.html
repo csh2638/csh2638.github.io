@@ -1,32 +1,41 @@
+---
+layout: table_wrappers
+---
+
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
-  <head>
-    {% include head.html %}
-  </head>
-
-  <body>
-    <div class="site-container">
-      <header class="site-header">
-        {% include header.html %}
-      </header>
-      
-      <div class="site-body wrapper">
-        <aside class="site-sidebar" id="site-sidebar">
-          {% if page.toc %}
-            {% include sidebar-toc.html %}
-          {% else %}
-            {% include sidebar.html %}
-          {% endif %}
-        </aside>
-        <main class="site-main" id="site-main" aria-label="Content" tabindex="1">
+<html lang="{{ site.lang | default: 'en-US' }}">
+{% include head.html %}
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  {% include icons/icons.html %}
+  {% include components/sidebar.html %}
+  <div class="main" id="top">
+    {% include components/header.html %}
+    <div id="main-content-wrap" class="main-content-wrap">
+      {% include components/breadcrumbs.html %}
+      <div id="main-content" class="main-content" role="main">
+        {% if site.heading_anchors != false %}
+          {% include vendor/anchor_headings.html html=content beforeHeading="true" anchorBody="<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\"><use xlink:href=\"#svg-link\"></use></svg>" anchorClass="anchor-heading" anchorAttrs="aria-labelledby=\"%html_id%\"" %}
+        {% else %}
           {{ content }}
-          <footer class="site-footer">
-            {% include footer.html %}
-          </footer>
-        </main>
+        {% endif %}
+
+        {% if page.has_children == true and page.has_toc != false %}
+          {% include components/children_nav.html toc_list=toc_list %}
+        {% endif %}
+
+        {% include components/footer.html %}
+
       </div>
     </div>
-  </body>
+    {% if site.search_enabled != false %}
+      {% include components/search_footer.html %}
+    {% endif %}
+  </div>
 
+  {% if site.mermaid %}
+    {% include components/mermaid.html %}
+  {% endif %}
+</body>
 </html>
